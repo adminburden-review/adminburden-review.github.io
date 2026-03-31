@@ -1,467 +1,327 @@
-import Link from "next/link";
+import React from "react";
 
-type ArrowTone = "main" | "context" | "feedback";
-
-const exploreLinks = [
-  { label: "Explore State Actions", href: "/library?focus=state-actions" },
-  { label: "Explore Burden Experiences", href: "/library?focus=burden-experiences" },
-  { label: "Explore Outcomes", href: "/library?relationship=Citizen%20Experience%20-%3E%20Outcomes" },
-  { label: "Explore Distributive Effects", href: "/library?focus=distributive-effects" },
-  {
-    label: "Explore Feedback",
-    href: "/library?relationship=Feedback%20%2F%20Burden%20Tolerance%20%2F%20State%20Action%20-%3E%20Institutional%20Design"
-  }
-];
+const STROKE = "#2f3135";
+const BACKGROUND = "#fcfcfa";
+const DASH = "12 10";
+const DOTS = "4 6";
 
 export function ConceptMap() {
   return (
-    <section className="space-y-5 rounded-3xl border border-marino/20 bg-white p-6 shadow-card">
-      <div className="max-w-4xl">
-        <h2 className="font-serif text-2xl text-tinta">
-          Conceptual Framework of Administrative Burden
-        </h2>
-        <p className="mt-2 text-sm leading-6 text-marino/80">
-          The framework is presented as a stable analytical composition rather than as an
-          interactive diagram. Structural conditions shape state action, state action generates
-          burden, burden shapes outcomes, and outcomes produce both distributive effects and later
-          feedback into state action.
+    <section className="rounded-[24px] border border-marino/16 bg-white px-5 py-5 shadow-card md:px-7">
+      <div className="mb-5 max-w-4xl space-y-2 border-b border-marino/10 pb-5">
+        <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-marino/58">
+          Administrative Burden Framework
+        </p>
+        <p className="text-sm leading-6 text-marino/82 md:text-[15px]">
+          This concept map follows the canonical framework used in the administrative burden
+          literature, linking upstream political and bureaucratic factors to state action,
+          experiences of burden, downstream outcomes, distributive effects, and feedback effects.
         </p>
       </div>
 
-      <div className="rounded-3xl border border-marino/15 bg-[#fcfbf8] p-4 md:p-6">
-        <div className="hidden md:block">
+      <div className="rounded-[20px] border border-[#d7d7d3] bg-[#fdfcf9] p-3 md:p-5">
+        <p className="mb-3 text-xs leading-5 text-marino/60 md:hidden">
+          Scroll horizontally to view the full figure.
+        </p>
+
+        <div className="overflow-x-auto">
           <svg
-            viewBox="0 0 1120 760"
-            className="h-auto w-full"
+            viewBox="0 0 1200 650"
+            className="h-auto min-w-[980px] w-full"
             role="img"
-            aria-label="Static conceptual framework of administrative burden"
+            aria-labelledby="concept-map-title concept-map-desc"
+            style={{ fontFamily: "var(--font-sans), sans-serif" }}
           >
+            <title id="concept-map-title">Administrative burden concept map</title>
+            <desc id="concept-map-desc">
+              Diagram showing how factors influencing state actions and burden tolerance shape
+              state actions, experiences of burden, outcomes, distributive effects, and feedback
+              effects.
+            </desc>
+
             <defs>
               <marker
-                id="framework-arrow-main"
-                viewBox="0 0 12 12"
-                refX="9"
-                refY="6"
-                markerWidth="6"
-                markerHeight="6"
+                id="concept-map-arrow"
+                viewBox="0 0 10 10"
+                refX="8"
+                refY="5"
+                markerWidth="8"
+                markerHeight="8"
                 orient="auto-start-reverse"
               >
-                <path d="M 0 0 L 12 6 L 0 12 z" fill="#17365d" />
-              </marker>
-              <marker
-                id="framework-arrow-context"
-                viewBox="0 0 12 12"
-                refX="9"
-                refY="6"
-                markerWidth="5"
-                markerHeight="5"
-                orient="auto-start-reverse"
-              >
-                <path d="M 0 0 L 12 6 L 0 12 z" fill="#5b6b61" />
-              </marker>
-              <marker
-                id="framework-arrow-feedback"
-                viewBox="0 0 12 12"
-                refX="9"
-                refY="6"
-                markerWidth="5"
-                markerHeight="5"
-                orient="auto-start-reverse"
-              >
-                <path d="M 0 0 L 12 6 L 0 12 z" fill="#8a7256" />
+                <path d="M 0 0 L 10 5 L 0 10 z" fill={STROKE} />
               </marker>
             </defs>
 
-            <rect x="42" y="38" width="1036" height="684" rx="24" fill="#ffffff" stroke="#d8dde5" />
+            <rect x="0" y="0" width="1200" height="650" fill={BACKGROUND} rx="16" />
 
-            <path
-              d="M 280 170 V 216 H 220 V 252"
-              fill="none"
-              stroke="#5b6b61"
-              strokeWidth="4"
-              strokeLinecap="round"
-              markerEnd="url(#framework-arrow-context)"
+            <g fill="none" stroke={STROKE} strokeWidth="2.2">
+              <rect x="30" y="30" width="300" height="130" fill="#ffffff" />
+              <rect
+                x="395"
+                y="30"
+                width="390"
+                height="115"
+                fill="none"
+                strokeDasharray={DASH}
+              />
+              <rect
+                x="350"
+                y="220"
+                width="250"
+                height="240"
+                fill="none"
+                strokeDasharray={DASH}
+              />
+              <rect
+                x="690"
+                y="180"
+                width="250"
+                height="350"
+                fill="none"
+                strokeDasharray={DASH}
+              />
+            </g>
+
+            <SvgBox
+              x={425}
+              y={75}
+              width={140}
+              height={55}
+              lines={["Citizen Factors"]}
+              fontSize={14}
             />
-            <path
-              d="M 560 170 V 244"
-              fill="none"
-              stroke="#5b6b61"
-              strokeWidth="4"
-              strokeLinecap="round"
-              markerEnd="url(#framework-arrow-context)"
+            <SvgBox
+              x={585}
+              y={75}
+              width={155}
+              height={55}
+              lines={["State", "Characteristics"]}
+              fontSize={14}
             />
-            <path
-              d="M 840 170 V 216 H 900 V 252"
-              fill="none"
-              stroke="#5b6b61"
-              strokeWidth="4"
-              strokeLinecap="round"
-              markerEnd="url(#framework-arrow-context)"
+            <SvgBox
+              x={385}
+              y={270}
+              width={160}
+              height={78}
+              lines={["Formal Policy", "Design"]}
+              fontSize={14}
+            />
+            <SvgBox
+              x={385}
+              y={382}
+              width={160}
+              height={78}
+              lines={["Informal Policy", "Design"]}
+              fontSize={14}
+            />
+            <SvgBox
+              x={725}
+              y={240}
+              width={160}
+              height={68}
+              lines={["Learning Costs"]}
+              fontSize={14}
+            />
+            <SvgBox
+              x={725}
+              y={326}
+              width={160}
+              height={68}
+              lines={["Compliance Costs"]}
+              fontSize={14}
+            />
+            <SvgBox
+              x={725}
+              y={412}
+              width={160}
+              height={68}
+              lines={["Psychological", "Costs"]}
+              fontSize={14}
+            />
+            <SvgBox
+              x={92}
+              y={315}
+              width={170}
+              height={85}
+              lines={["Burden Tolerance", "/ Program", "Support"]}
+              fontSize={14}
+            />
+            <SvgBox
+              x={1010}
+              y={340}
+              width={145}
+              height={65}
+              lines={["Outcomes"]}
+              fontSize={14}
             />
 
-            <path
-              d="M 340 360 H 442"
-              fill="none"
-              stroke="#17365d"
-              strokeWidth="7"
-              strokeLinecap="round"
-              markerEnd="url(#framework-arrow-main)"
-            />
-            <path
-              d="M 678 360 H 782"
-              fill="none"
-              stroke="#17365d"
-              strokeWidth="7"
-              strokeLinecap="round"
-              markerEnd="url(#framework-arrow-main)"
-            />
+            <g fill={STROKE} fontSize="12.5">
+              <text x="42" y="52" fontWeight="700" textDecoration="underline">
+                <tspan x="42" dy="0">
+                  Factors Influencing State Actions
+                </tspan>
+                <tspan x="42" dy="16">
+                  and/or Burden Tolerance.
+                </tspan>
+              </text>
+              <text x="42" y="91">
+                <tspan x="42" dy="0">
+                  1) Ideology
+                </tspan>
+                <tspan x="42" dy="18">
+                  2) Target Group Deservingness
+                </tspan>
+                <tspan x="42" dy="18">
+                  3) Personal Experience with Benefits
+                </tspan>
+                <tspan x="42" dy="18">
+                  4) Bureaucratic Processes
+                </tspan>
+              </text>
+            </g>
 
-            <path
-              d="M 886 462 V 520 H 694 V 552"
-              fill="none"
-              stroke="#5b6b61"
-              strokeWidth="4"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              markerEnd="url(#framework-arrow-context)"
-            />
-            <path
-              d="M 958 462 V 552"
-              fill="none"
-              stroke="#8a7256"
-              strokeWidth="3"
-              strokeLinecap="round"
-              strokeDasharray="10 9"
-              markerEnd="url(#framework-arrow-feedback)"
-            />
-            <path
-              d="M 872 634 H 146 V 430"
-              fill="none"
-              stroke="#8a7256"
-              strokeWidth="3"
-              strokeLinecap="round"
-              strokeDasharray="10 9"
-              markerEnd="url(#framework-arrow-feedback)"
-            />
+            <g fill={STROKE} fontSize="15" fontWeight="700" textAnchor="middle">
+              <text x="590" y="62">
+                Distributive Effects
+              </text>
+              <text x="475" y="245">
+                State Actions
+              </text>
+              <text x="815" y="205">
+                Experiences of Burden
+              </text>
+            </g>
 
-            <rect x="82" y="62" width="956" height="108" rx="18" fill="#f8f4ed" stroke="#d2d9e1" />
-            <text x="98" y="95" fontSize="13" fill="#76879a" letterSpacing="2.2" fontWeight="700">
-              1. STRUCTURAL AND DISTRIBUTIVE CONDITIONS
-            </text>
-            <text
-              x="98"
-              y="132"
-              fontSize="24"
-              fill="#10243f"
-              fontFamily="var(--font-serif)"
+            <g
+              fill="none"
+              stroke={STROKE}
+              strokeWidth="2.3"
+              markerEnd="url(#concept-map-arrow)"
             >
-              Structural and Distributive Conditions
-            </text>
-            <rect x="98" y="144" width="430" height="26" rx="13" fill="#ffffff" stroke="#d5dbe3" />
-            <rect x="592" y="144" width="430" height="26" rx="13" fill="#ffffff" stroke="#d5dbe3" />
-            <text x="114" y="161" fontSize="14" fill="#10243f" fontWeight="500">
-              Citizen Position and Resources
-            </text>
-            <text x="608" y="161" fontSize="14" fill="#10243f" fontWeight="500">
-              State Characteristics and Administrative Capacity
-            </text>
+              <line x1="190" y1="160" x2="190" y2="315" />
+              <line x1="190" y1="160" x2="350" y2="260" />
+              <line x1="350" y1="357" x2="262" y2="357" />
+              <line x1="545" y1="309" x2="725" y2="309" />
+              <line x1="545" y1="421" x2="725" y2="421" />
+              <line x1="600" y1="145" x2="600" y2="309" />
+              <line x1="940" y1="373" x2="1010" y2="373" />
+              <path d="M 830 530 V 590 H 190 V 402" />
+              <line x1="475" y1="590" x2="475" y2="460" />
+            </g>
 
-            <rect x="82" y="252" width="258" height="196" rx="18" fill="#fbf5ea" stroke="#d9c7a6" />
-            <text x="98" y="285" fontSize="13" fill="#7f8ea0" letterSpacing="2.1" fontWeight="700">
-              2. STATE ACTIONS
-            </text>
-            <text
-              x="98"
-              y="326"
-              fontSize="22"
-              fill="#10243f"
-              fontFamily="var(--font-serif)"
-            >
-              State Actions
-            </text>
-            <rect x="98" y="346" width="226" height="40" rx="12" fill="#ffffff" stroke="#d5dbe3" />
-            <rect x="98" y="396" width="226" height="40" rx="12" fill="#ffffff" stroke="#d5dbe3" />
-            <text x="112" y="370" fontSize="14" fill="#10243f" fontWeight="500">
-              Formal Policy Design
-            </text>
-            <text x="112" y="419" fontSize="14" fill="#10243f" fontWeight="500">
-              Informal Policy Design /
-            </text>
-            <text x="112" y="438" fontSize="14" fill="#10243f" fontWeight="500">
-              Implementation
-            </text>
-
-            <rect x="442" y="232" width="236" height="256" rx="18" fill="#ffffff" stroke="#cad3de" />
-            <text x="458" y="265" fontSize="13" fill="#7f8ea0" letterSpacing="2.1" fontWeight="700">
-              3. EXPERIENCES OF BURDEN
-            </text>
-            <text
-              x="458"
-              y="306"
-              fontSize="25"
-              fill="#10243f"
-              fontFamily="var(--font-serif)"
-            >
-              Experiences of Burden
-            </text>
-            <rect x="458" y="332" width="204" height="40" rx="12" fill="#f7f4ee" stroke="#d5dbe3" />
-            <rect x="458" y="382" width="204" height="40" rx="12" fill="#f7f4ee" stroke="#d5dbe3" />
-            <rect x="458" y="432" width="204" height="40" rx="12" fill="#f7f4ee" stroke="#d5dbe3" />
-            <text x="472" y="356" fontSize="14" fill="#10243f" fontWeight="500">
-              Learning Costs
-            </text>
-            <text x="472" y="406" fontSize="14" fill="#10243f" fontWeight="500">
-              Compliance Costs
-            </text>
-            <text x="472" y="456" fontSize="14" fill="#10243f" fontWeight="500">
-              Psychological Costs
-            </text>
-
-            <rect x="782" y="252" width="258" height="210" rx="18" fill="#f6faf7" stroke="#bfd0c4" />
-            <text x="798" y="285" fontSize="13" fill="#7f8ea0" letterSpacing="2.1" fontWeight="700">
-              4. OUTCOMES
-            </text>
-            <text
-              x="798"
-              y="326"
-              fontSize="22"
-              fill="#10243f"
-              fontFamily="var(--font-serif)"
-            >
-              Outcomes
-            </text>
-            <rect x="798" y="342" width="226" height="34" rx="11" fill="#ffffff" stroke="#d5dbe3" />
-            <rect x="798" y="384" width="226" height="34" rx="11" fill="#ffffff" stroke="#d5dbe3" />
-            <rect x="798" y="426" width="226" height="34" rx="11" fill="#ffffff" stroke="#d5dbe3" />
-            <rect x="798" y="468" width="226" height="34" rx="11" fill="#ffffff" stroke="#d5dbe3" />
-            <text x="812" y="364" fontSize="14" fill="#10243f" fontWeight="500">
-              Access / Take-up
-            </text>
-            <text x="812" y="406" fontSize="14" fill="#10243f" fontWeight="500">
-              Exclusion / Drop-off
-            </text>
-            <text x="812" y="448" fontSize="14" fill="#10243f" fontWeight="500">
-              Appeals / Correction
-            </text>
-            <text x="812" y="490" fontSize="14" fill="#10243f" fontWeight="500">
-              Trust / Stress / Wellbeing
-            </text>
-
-            <rect x="520" y="552" width="320" height="130" rx="18" fill="#fbfaf7" stroke="#d2d9e1" />
-            <text x="536" y="585" fontSize="13" fill="#7f8ea0" letterSpacing="2.1" fontWeight="700">
-              5. DISTRIBUTIVE EFFECTS
-            </text>
-            <text
-              x="536"
-              y="626"
-              fontSize="22"
-              fill="#10243f"
-              fontFamily="var(--font-serif)"
-            >
-              Distributive Effects
-            </text>
-            <rect x="536" y="642" width="288" height="34" rx="11" fill="#ffffff" stroke="#d5dbe3" />
-            <rect x="536" y="684" width="288" height="34" rx="11" fill="#ffffff" stroke="#d5dbe3" />
-            <text x="550" y="664" fontSize="14" fill="#10243f" fontWeight="500">
-              Unequal burden across groups
-            </text>
-            <text x="550" y="706" fontSize="14" fill="#10243f" fontWeight="500">
-              Unequal outcomes across groups
-            </text>
-
-            <rect
-              x="872"
-              y="552"
-              width="168"
-              height="116"
-              rx="18"
-              fill="#ffffff"
-              stroke="#c5cfdb"
-              strokeDasharray="7 6"
+            <line
+              x1="262"
+              y1="388"
+              x2="350"
+              y2="388"
+              fill="none"
+              stroke={STROKE}
+              strokeWidth="2.3"
+              strokeDasharray={DOTS}
+              markerEnd="url(#concept-map-arrow)"
             />
-            <text x="888" y="585" fontSize="13" fill="#7f8ea0" letterSpacing="2.1" fontWeight="700">
-              6. FEEDBACK
-            </text>
+
+            <g fill={STROKE} fontSize="14" fontWeight="600">
+              <text x="176" y="245">
+                7b
+              </text>
+              <text x="268" y="228">
+                7a
+              </text>
+              <text x="305" y="348">
+                6b
+              </text>
+              <text x="305" y="405">
+                6a
+              </text>
+              <text x="635" y="300">
+                1
+              </text>
+              <text x="635" y="412">
+                2
+              </text>
+              <text x="586" y="235">
+                3
+              </text>
+              <text x="978" y="364">
+                4
+              </text>
+              <text x="456" y="520">
+                5a
+              </text>
+              <text x="170" y="525">
+                5b
+              </text>
+            </g>
+
             <text
-              x="888"
+              x="505"
               y="620"
-              fontSize="18"
-              fill="#10243f"
-              fontFamily="var(--font-serif)"
+              fill={STROKE}
+              fontSize="15"
+              fontWeight="600"
+              textAnchor="middle"
             >
-              Feedback / Burden
-            </text>
-            <text
-              x="888"
-              y="647"
-              fontSize="18"
-              fill="#10243f"
-              fontFamily="var(--font-serif)"
-            >
-              Tolerance / State
-            </text>
-            <text
-              x="888"
-              y="674"
-              fontSize="18"
-              fill="#10243f"
-              fontFamily="var(--font-serif)"
-            >
-              Action
+              Feedback Effects
             </text>
           </svg>
         </div>
 
-        <div className="space-y-4 md:hidden">
-          <MobilePanel
-            step="1"
-            title="Structural and Distributive Conditions"
-            tone="band"
-            items={[
-              "Citizen Position and Resources",
-              "State Characteristics and Administrative Capacity"
-            ]}
-          />
-          <MobileArrow label="Structural and Distributive Conditions shape State Actions, Burden, and Outcomes." tone="context" />
-          <MobilePanel
-            step="2"
-            title="State Actions"
-            tone="actions"
-            items={["Formal Policy Design", "Informal Policy Design / Implementation"]}
-          />
-          <MobileArrow label="State Actions generate Experiences of Burden." tone="main" />
-          <MobilePanel
-            step="3"
-            title="Experiences of Burden"
-            tone="burden"
-            items={["Learning Costs", "Compliance Costs", "Psychological Costs"]}
-          />
-          <MobileArrow label="Experiences of Burden shape Outcomes." tone="main" />
-          <MobilePanel
-            step="4"
-            title="Outcomes"
-            tone="outcomes"
-            items={[
-              "Access / Take-up",
-              "Exclusion / Drop-off",
-              "Appeals / Correction",
-              "Trust / Stress / Wellbeing"
-            ]}
-          />
-          <div className="grid gap-3 sm:grid-cols-2">
-            <MobilePanel
-              step="5"
-              title="Distributive Effects"
-              tone="effects"
-              items={["Unequal burden across groups", "Unequal outcomes across groups"]}
-            />
-            <MobilePanel
-              step="6"
-              title="Feedback / Burden Tolerance / State Action"
-              tone="feedback"
-              items={["Later state response shaped by observed outcomes"]}
-            />
-          </div>
-        </div>
-      </div>
-
-      <div className="rounded-2xl border border-marino/15 bg-fondo/60 p-4">
-        <p className="text-xs font-semibold uppercase tracking-[0.14em] text-marino/60">
-          Reading guide
-        </p>
-        <p className="mt-2 text-sm leading-6 text-marino/80">
-          Dark solid arrows mark the main analytical pathway. Lighter solid arrows indicate
-          contextual shaping. Dashed arrows capture feedback from outcomes back into later state
-          action.
-        </p>
-      </div>
-
-      <div className="flex flex-wrap gap-3">
-        {exploreLinks.map((link) => (
-          <Link
-            key={link.label}
-            href={link.href}
-            className="rounded-full border border-marino/20 bg-white px-4 py-2 text-sm font-semibold text-marino transition hover:bg-fondo"
+        <p className="mt-4 text-xs leading-5 text-marino/68 md:text-sm">
+          <span className="font-semibold text-tinta">Source:</span>{" "}
+          <a
+            href="https://academic.oup.com/jpart/article/34/2/180/7287903"
+            target="_blank"
+            rel="noreferrer"
+            className="underline decoration-marino/35 underline-offset-2 transition hover:text-marino"
           >
-            {link.label}
-          </Link>
-        ))}
+            Halling, A., &amp; Baekgaard, M. (2024). Administrative Burden in Citizen-State
+            Interactions: A Systematic Literature Review. Journal of Public Administration
+            Research and Theory, 34(2), 180-195.
+          </a>
+        </p>
       </div>
     </section>
   );
 }
 
-function MobilePanel({
-  step,
-  title,
-  tone,
-  items
+function SvgBox({
+  x,
+  y,
+  width,
+  height,
+  lines,
+  fontSize
 }: {
-  step: string;
-  title: string;
-  tone: "band" | "actions" | "burden" | "outcomes" | "effects" | "feedback";
-  items: string[];
+  x: number;
+  y: number;
+  width: number;
+  height: number;
+  lines: string[];
+  fontSize: number;
 }) {
+  const lineHeight = fontSize + 5;
+  const startY = y + height / 2 - ((lines.length - 1) * lineHeight) / 2 + fontSize / 3;
+  const centerX = x + width / 2;
+
   return (
-    <div className={mobilePanelClassName(tone)}>
-      <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-marino/55">
-        {step}. {title}
-      </p>
-      <ul className="mt-3 space-y-2">
-        {items.map((item) => (
-          <li
-            key={item}
-            className="rounded-xl border border-marino/12 bg-white/88 px-3 py-2 text-sm font-medium text-tinta"
-          >
-            {item}
-          </li>
+    <g>
+      <rect x={x} y={y} width={width} height={height} fill="#ffffff" stroke={STROKE} strokeWidth="2.2" />
+      <text
+        x={centerX}
+        y={startY}
+        fill={STROKE}
+        fontSize={fontSize}
+        fontWeight="500"
+        textAnchor="middle"
+      >
+        {lines.map((line, index) => (
+          <tspan key={`${line}-${index}`} x={centerX} dy={index === 0 ? 0 : lineHeight}>
+            {line}
+          </tspan>
         ))}
-      </ul>
-    </div>
+      </text>
+    </g>
   );
-}
-
-function MobileArrow({ label, tone }: { label: string; tone: ArrowTone }) {
-  return (
-    <div className="rounded-2xl border border-marino/12 bg-white px-4 py-3">
-      <div className="flex items-center gap-3">
-        <span className={legendLineClassName(tone)} />
-        <p className="text-sm text-marino/80">{label}</p>
-      </div>
-    </div>
-  );
-}
-
-function mobilePanelClassName(
-  tone: "band" | "actions" | "burden" | "outcomes" | "effects" | "feedback"
-) {
-  const base = "rounded-2xl border p-4 shadow-[0_8px_18px_rgba(16,36,63,0.05)]";
-
-  switch (tone) {
-    case "band":
-      return `${base} border-marino/18 bg-[linear-gradient(180deg,rgba(246,243,237,0.96),rgba(255,255,255,0.99))]`;
-    case "actions":
-      return `${base} border-arena bg-[linear-gradient(180deg,rgba(232,220,196,0.66),rgba(255,255,255,0.99))]`;
-    case "burden":
-      return `${base} border-marino/24 bg-white`;
-    case "outcomes":
-      return `${base} border-musgo/28 bg-[linear-gradient(180deg,rgba(71,98,79,0.12),rgba(255,255,255,0.99))]`;
-    case "effects":
-      return `${base} border-marino/18 bg-[linear-gradient(180deg,rgba(246,243,237,0.94),rgba(255,255,255,0.99))]`;
-    case "feedback":
-    default:
-      return `${base} border-marino/22 border-dashed bg-white`;
-  }
-}
-
-function legendLineClassName(tone: ArrowTone) {
-  if (tone === "main") {
-    return "h-[5px] w-10 rounded-full bg-marino";
-  }
-
-  if (tone === "context") {
-    return "h-[4px] w-10 rounded-full bg-musgo";
-  }
-
-  return "h-[3px] w-10 rounded-full bg-arena [background-image:linear-gradient(90deg,currentColor_62%,transparent_62%)] [background-size:14px_100%] text-[#8a7256]";
 }
