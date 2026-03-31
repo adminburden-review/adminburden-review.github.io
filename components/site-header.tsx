@@ -9,7 +9,6 @@ import { SessionSwitcher } from "@/components/auth/session-switcher";
 const navItems = [
   { href: "/", label: "Home" },
   { href: "/library", label: "Library" },
-  { href: "/framework", label: "Framework" },
   { href: "/submit", label: "Submit" },
   { href: "/admin", label: "Admin" }
 ];
