@@ -39,7 +39,6 @@ The app already reads environment variables from [lib/env.ts](/Users/francisco_f
 ### Required for the static phase
 
 - `NEXT_PUBLIC_APP_URL`: Public base URL of the site.
-- `NEXT_PUBLIC_BASE_PATH`: Route prefix when deploying to a GitHub Pages project site, for example `/my-repo`. Leave it empty for a root-domain deployment.
 
 ### Reserved for phase 2 with Supabase
 
@@ -65,10 +64,9 @@ Steps:
 3. In GitHub, enable Pages with `GitHub Actions` as the source.
 4. Push to `main`.
 
-The workflow computes `NEXT_PUBLIC_BASE_PATH` automatically:
+The workflow exports the site for root deployment and sets:
 
-- empty when the repository is `username.github.io`
-- `/<repo-name>` for a standard project repository
+- `NEXT_PUBLIC_APP_URL=https://adminburden-review.github.io`
 
 ## Current mock editorial rule
 
@@ -104,4 +102,3 @@ All of this still runs in the client with `localStorage`, but the structure is r
 - `/framework`
 - `/admin`
 - `/editorial-board`
-
